@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <div class = "card-header">
+    {{transaction_record.System_Number}}
+    </div>
+    <div class="card-body">
+        <p class="card-text"><strong>Drug Name:</strong>
+        {{transaction_record.Drug_Name}}
+        </p>
+        <p class="card-text"><strong>Dose:</strong>
+        {{transaction_record.Dose}}
+        </p>
+        <p class="card-text"><strong>Administration Route:</strong>
+        {{transaction_record.Administration_Route}}
+        </p>
+        <p class="card-text"><strong>Administration Date & Time:</strong>
+        {{transaction_record.Administration_DateTime}}
+        </p>
+      </h5>
+  </div>
+</div>
+
+  <br/>
+
+  <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+  <a href="{% url 'delete_transaction' transaction_record.id %}" class="btn btn-danger">Delete</a>
+
+  <a href="{% url 'update_transaction' transaction_record.id %}" class="btn btn-primary">Update</a>
+
+{% endblock %}

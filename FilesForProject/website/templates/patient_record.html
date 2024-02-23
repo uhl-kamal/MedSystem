@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <div class = "card-header">
+    {{patient_record.System_Number}}
+    </div>
+    <div class="card-body">
+        <p class="card-text"><strong>First Name:</strong>
+        {{patient_record.First_Name}}
+        </p>
+        <p class="card-text"><strong>Last Name:</strong>
+        {{patient_record.Last_Name}}
+        </p>
+        <p class="card-text"><strong>DOB:</strong>
+        {{patient_record.DOB}}
+        </p>
+      </h5>
+  </div>
+</div>
+
+  <br/>
+
+  <a href="{% url 'patient_view' %}" class="btn btn-secondary">Back</a>
+
+  <a href="{% url 'delete_patient' patient_record.id %}" class="btn btn-danger">Delete</a>
+
+  <a href="{% url 'update_patient' patient_record.id %}" class="btn btn-primary">Update</a>
+
+{% endblock %}

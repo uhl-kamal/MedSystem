@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class = "container-fluid">
+
+<div>
+<a href="{% url 'add_transaction' %}" class="btn btn-info text-light">Administer Drug</a>
+</div>
+
+<br/>
+
+<table id="example" class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">System Number</th>
+      <th scope="col">Drug Name</th>
+      <th scope="col">Dose</th>
+      <th scope="col">Administration Route</th>
+      <th scope="col">Date & Time Of Administration</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      {% if t_records %}
+      {% for rec in t_records %}
+    <tr>
+      <td><a href="{% url 'transaction_record' rec.id%}">{{rec.System_Number}}<a/></td>
+      <td>{{rec.Drug_Name}}</td>
+      <td>{{rec.Dose}}</td>
+      <td>{{rec.Administration_Route}}</td>
+      <td>{{rec.Administration_DateTime}}</td>
+    </tr>
+      {% endfor %}
+      {% endif %}
+  </tbody>
+
+</table>
+
+</div>
+
+{% else %}
+    
+<div class = "container-fluid">
+    <br/>
+    <h1>Login</h1>
+    <br/>
+    <form method = "POST" action ="{% url 'home' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" placeholder="Username" required>
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
+          </div>
+          <br/>
+          <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+ 
+{% endif %}
+
+{% endblock %}

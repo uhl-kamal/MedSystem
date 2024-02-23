@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-xs-6 col-xs-offset-6">
+
+<br/>
+
+<h1>Update transaction</h1>
+
+<br/>
+
+<br/>
+
+<form method = "POST">
+    {% csrf_token %}
+ 
+    {{ form.as_p }}
+
+<br/>
+
+      <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+      <button type="submit" class="btn btn-primary">Update</button>
+
+</form>
+
+</div>
+
+{% endblock %}
